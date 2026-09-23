@@ -1,0 +1,25 @@
+# --- Web framework ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-dotenv==1.0.1
+pydantic==2.9.2
+langfuse>=4.0.0
+langchain>=0.3.0
+
+# --- Document parsing ---
+pypdf==4.3.1
+python-pptx==1.0.2
+
+# --- Vector store & retrieval ---
+chromadb==0.5.5
+sentence-transformers==3.1.1
+rank-bm25==0.2.2
+
+# --- LLM providers ---
+groq==0.11.0
+anthropic==0.34.2
+
+# --- Agent orchestration (Phase 4) ---
+langgraph>=0.2.34
+langchain-core>=0.3.15
+mcp>=1.0.0

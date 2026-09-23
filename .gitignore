@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+data/chroma/
+data/uploads/*
+!data/uploads/.gitkeep
+.venv/
+venv/
+*.log
+.DS_Store
+chroma_db/
+app/eval/eval_results.json

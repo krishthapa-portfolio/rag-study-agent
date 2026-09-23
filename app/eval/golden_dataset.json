@@ -1,0 +1,128 @@
+[
+  {
+    "id": "info4670_q1",
+    "class_name": "info 4670",
+    "question": "What is the difference between structured, unstructured, and semi-structured data?",
+    "golden_answer": "Structured data is organized into rows and columns with every value in a defined place, like database tables or spreadsheets, making it easy to query and mine. Unstructured data has no identifiable internal layout (images, audio, video, free text) and needs heavy processing before it can be mined. Semi-structured data sits in between: it has a discernible, parseable pattern like tags (JSON, XML) but the shape can flex from record to record."
+  },
+  {
+    "id": "info4670_q2",
+    "class_name": "info 4670",
+    "question": "What are the four levels of measurement for attribute types, and why does the type of a column matter?",
+    "golden_answer": "The four levels are nominal (names with no order, like major), ordinal (ordered but with unknown gaps, like week number), interval (equal gaps but no true zero, like a date), and ratio (equal gaps with a true zero, like GPA or age). Each level keeps every power of the level below it and adds one. The type matters because it decides what math is legal on a column \u2014 a tool will happily average a student ID even though that number is meaningless, since the type check lives in the analyst's head, not in the software."
+  },
+  {
+    "id": "info4670_q3",
+    "class_name": "info 4670",
+    "question": "When would you use Kaggle versus UCI Machine Learning Repository versus Data.gov to find a dataset?",
+    "golden_answer": "Kaggle is best for project-sized CSVs with community notebooks showing how others approached similar data. UCI Machine Learning Repository is best for clean, well-documented academic classics with clearly defined tasks, a good first stop for classification practice. Data.gov is best when you want real institutional data with real institutional messiness, since it's the U.S. government's open-data catalog spanning education, health, transport, and more."
+  },
+  {
+    "id": "info4670_q4",
+    "class_name": "info 4670",
+    "question": "What is OULAD and why is it used as a default dataset option for the final project?",
+    "golden_answer": "OULAD is the Open University Learning Analytics Dataset, containing over 32,000 real, anonymized students across seven linked tables and millions of LMS click records. It's used as the default final-project option because it's structurally a real-world sibling of the course's own Northgate practice dataset \u2014 students, courses, and weekly activity data \u2014 so skills practiced on Northgate transfer directly."
+  },
+  {
+    "id": "info4670_q5",
+    "class_name": "info 4670",
+    "question": "Give an example of why you can't just apply any math operation to any column of data.",
+    "golden_answer": "Student ID is a number, but it's a nominal attribute, not a ratio one \u2014 it identifies a student, it doesn't measure a quantity. A tool will happily compute the average of a column of student IDs without erroring, but the result is meaningless, unlike averaging a GPA column, which is a legitimate ratio-level operation. The lesson is that legality of a math operation depends on the attribute's measurement level, not just whether the values happen to be numeric."
+  },
+  {
+    "id": "info4365_q1",
+    "class_name": "info 4365",
+    "question": "What are the main stages of information flow in a typical healthcare encounter?",
+    "golden_answer": "The flow generally moves through patient registration and appointment scheduling, an outpatient or ambulatory encounter, possibly an inpatient encounter if hospitalization is needed, medical claims processing and payment, and finally feeding into clinical data repositories that inform broader care and analytics."
+  },
+  {
+    "id": "info4365_q2",
+    "class_name": "info 4365",
+    "question": "What is an Electronic Health Record (EHR) and what gets entered into it during patient registration?",
+    "golden_answer": "An EHR is the digital system that stores a patient's clinical and administrative information across a care episode. During registration, information such as appointment scheduling details and insurance and billing data is generated and entered into the EHR as soon as a patient books a visit."
+  },
+  {
+    "id": "info4365_q3",
+    "class_name": "info 4365",
+    "question": "What typically happens during an outpatient or ambulatory encounter?",
+    "golden_answer": "A patient checks in with a receptionist who verifies insurance information, then a nurse brings the patient back, reviews medications, and records vital signs before the physician arrives. The physician reviews the EHR, examines the patient, and may order follow-up services like lab work or imaging, all of which get documented back into the patient's record."
+  },
+  {
+    "id": "info4365_q4",
+    "class_name": "info 4365",
+    "question": "How does information flow between different providers, like a primary care physician and a specialist?",
+    "golden_answer": "When a primary care physician needs a specialist's input, they consult with that specialist, who then reviews the patient's existing records in the EHR before the patient's visit. This lets the specialist see prior test results, such as a pathology report, ahead of time, so care decisions build on a shared record instead of starting from scratch."
+  },
+  {
+    "id": "info4365_q5",
+    "class_name": "info 4365",
+    "question": "Why would a patient move from an outpatient encounter into an inpatient encounter?",
+    "golden_answer": "A patient is admitted to inpatient care when their condition requires a procedure or monitoring beyond what an outpatient visit can provide, such as surgery, especially if other health history (like a cardiac condition) adds risk that calls for overnight observation. Once inpatient, the patient's vitals, procedures, and recovery are tracked by a rotating care team, all logged into the same EHR system."
+  },
+  {
+    "id": "dbsystems_q1",
+    "class_name": "bcis 4620",
+    "question": "What is an entity in ER modeling, and how is it represented?",
+    "golden_answer": "An entity is a person, place, event, or thing relevant to the database, represented as a table where each row is a specific occurrence (an entity instance) and each column is an attribute of that entity. In an ER diagram, an entity is typically drawn as a rectangle labeled with the entity name."
+  },
+  {
+    "id": "dbsystems_q2",
+    "class_name": "bcis 4620",
+    "question": "What is a relationship in ER modeling?",
+    "golden_answer": "A relationship describes an association between two or more entities, such as a professor teaching a class or a customer placing an order. Relationships are represented in an ER diagram as a line connecting the related entities, often labeled with a verb describing the association."
+  },
+  {
+    "id": "dbsystems_q3",
+    "class_name": "bcis 4620",
+    "question": "What is connectivity in ER modeling, and what are the three basic types?",
+    "golden_answer": "Connectivity describes the type of relationship that exists between entities in terms of how many instances of one entity relate to instances of another. The three basic types are one-to-one (1:1), one-to-many (1:M), and many-to-many (M:N)."
+  },
+  {
+    "id": "dbsystems_q4",
+    "class_name": "bcis 4620",
+    "question": "What is cardinality in ER modeling?",
+    "golden_answer": "Cardinality expresses the specific minimum and maximum number of entity occurrences associated with a single occurrence of a related entity \u2014 for example, one professor may teach a minimum of 0 and a maximum of 4 classes in a given semester. It gives a precise numeric range, unlike connectivity, which only describes the general relationship type."
+  },
+  {
+    "id": "dbsystems_q5",
+    "class_name": "bcis 4620",
+    "question": "What is the difference between mandatory and optional participation in a relationship?",
+    "golden_answer": "Mandatory participation means at least one instance of a relationship must exist for an entity occurrence \u2014 for example, every employee must be assigned to a department. Optional participation means an entity occurrence can exist without a related instance in the relationship \u2014 for example, a customer can exist in the database without having placed any orders yet."
+  },
+  {
+    "id": "comm_q1",
+    "class_name": "bcis 3615",
+    "question": "How does this course define communication?",
+    "golden_answer": "Communication is defined as a systemic process in which people interact with and through symbols to create and interpret meanings."
+  },
+  {
+    "id": "comm_q2",
+    "class_name": "bcis 3615",
+    "question": "What does it mean that communication is 'systemic'?",
+    "golden_answer": "Calling communication systemic means it occurs within a system of interrelated parts that all affect one another \u2014 it isn't an isolated exchange between two people in a vacuum, but something shaped by the broader context and relationships surrounding it."
+  },
+  {
+    "id": "comm_q3",
+    "class_name": "bcis 3615",
+    "question": "What are the three steps involved in perception?",
+    "golden_answer": "Perception is the active process of selecting, organizing, and interpreting people, objects, events, situations, and activities. Those three steps \u2014 select, organize, interpret \u2014 are how raw sensory input gets turned into meaning."
+  },
+  {
+    "id": "comm_q4",
+    "class_name": "bcis 3615",
+    "question": "What factors influence which information we select to pay attention to during perception?",
+    "golden_answer": "Selection is influenced by external qualities that draw attention, the acuity of our own senses, change or variation in what we're perceiving, and our own motives, needs, and expectations going in."
+  },
+  {
+    "id": "comm_q5",
+    "class_name": "bcis 3615",
+    "question": "What is the self-fulfilling prophecy, in the context of perception?",
+    "golden_answer": "The self-fulfilling prophecy is the idea that people act in ways consistent with how they've learned to perceive themselves \u2014 a person's own self-perception shapes their behavior in a way that reinforces that original perception."
+  },
+  {
+    "id": "bad_q1",
+    "class_name": "info 4670",
+    "question": "How do horses fly?",
+    "golden_answer": "This question is unrelated to the course material. The system should state plainly that it has no information on this topic rather than attempting an answer."
+  }
+]
