@@ -1,10 +1,12 @@
-Student RAG Study Agent
+# Student RAG Study Agent
 
 An AI study assistant that answers questions from your own class materials, the same idea as Notion AI or a subscription study tool, but free and self hosted, and it only ever answers from documents you actually uploaded instead of guessing.
 
 You upload your slides, notes, and readings for a class. Then you ask it questions the way you would ask a classmate the night before an exam, and it answers using only what you gave it, with citations back to the specific slide or page. If the material doesn't cover something, it says so instead of making something up.
 
-How it works
+## How it works
+
+```
 question
    |
    v
@@ -19,10 +21,11 @@ check if retrieved material is actually enough
    |
    v
 synthesize final answer with citations (Anthropic)
+```
 
 Model routing splits the work by cost and stakes. Groq handles the small internal steps, retrieval judgment and query reformulation, since they're cheap and need to be fast. Anthropic handles only the final synthesis, the one call actually worth paying for quality on. Retrieval goes through an MCP server, so the agent discovers and calls the search tool rather than having it hardcoded in.
 
-What actually went wrong, and what I learned fixing it
+## What actually went wrong, and what I learned fixing it
 
 This project didn't come together cleanly, and that's worth being honest about.
 
@@ -34,7 +37,7 @@ Neither threw an error. The system just quietly did the wrong thing every time, 
 
 After fixing both token limits and loosening an overly cautious refusal instruction, the same eval came back at 95%, 20 out of 21, with the one remaining answer graded partial.
 
-Results
+## Results
 
 Latency: 106 to 122 seconds down to 39 to 46 seconds per request.
 
@@ -44,16 +47,18 @@ Latency breakdown from LangFuse: synthesis dominates total request time, p50 aro
 
 Correctly refuses to answer outside the uploaded material, tested against a nonexistent class and a real class with an unrelated nonsense question.
 
-Tech stack
-LangGraph, agent control flow and retry loop
-MCP (FastMCP), retrieval exposed as a discoverable tool
-Groq, fast cheap internal reasoning steps
-Anthropic, final answer synthesis
-ChromaDB, vector store
-Hybrid retrieval, BM25 + semantic search, fused with RRF
-FastAPI, backend
-LangFuse, tracing and observability
-Setup
+## Tech stack
+
+- LangGraph, agent control flow and retry loop
+- MCP (FastMCP), retrieval exposed as a discoverable tool
+- Groq, fast cheap internal reasoning steps
+- Anthropic, final answer synthesis
+- ChromaDB, vector store
+- Hybrid retrieval, BM25 + semantic search, fused with RRF
+- FastAPI, backend
+- LangFuse, tracing and observability
+
+## Setup
 
 Clone the repo and create a virtual environment.
 
@@ -61,9 +66,9 @@ Install dependencies from requirements.txt.
 
 Create a .env file with GROQ_API_KEY, ANTHROPIC_API_KEY, LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY, and LANGFUSE_BASE_URL.
 
-Run uvicorn app.main:app --reload and hit the API through the Swagger docs at /docs, or POST directly to /ask with a class_name and question.
+Run `uvicorn app.main:app --reload` and hit the API through the Swagger docs at /docs, or POST directly to /ask with a class_name and question.
 
-Known limitations
+## Known limitations
 
 Retrieval sometimes misses the right chunk on certain phrasings even when the source material covers the topic, the clearest next thing to tune, likely through chunk size or retrieval count.
 
@@ -71,7 +76,7 @@ The eval judge is itself an LLM and not perfectly consistent between runs on bor
 
 No frontend yet, everything runs through the API directly.
 
-Where this generalizes
+## Where this generalizes
 
 The real thing I built here is the pattern, not the study assistant. Retrieval grounded strictly in provided documents, a retry loop that knows when to reformulate instead of guessing, cost-aware model routing, and an eval and observability layer that catches silent failures instead of assuming no crash means correct.
 
