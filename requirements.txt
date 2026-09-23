@@ -9,6 +9,7 @@ langchain>=0.3.0
 # --- Document parsing ---
 pypdf==4.3.1
 python-pptx==1.0.2
+tiktoken==0.7.0
 
 # --- Vector store & retrieval ---
 chromadb==0.5.5
